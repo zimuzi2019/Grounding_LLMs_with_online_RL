@@ -110,16 +110,17 @@ class Level_MixedLocal(LevelGen):
         #action = self._rand_elem(self.action_kinds)
         action = self.action_kinds[0] # only one action kind ?
         
-        mission_accepted = False
+        #mission_accepted = False
         all_objects_reachable = False
         
         if action == 'open':
-            while not mission_accepted or not all_objects_reachable:
+            #while not mission_accepted or not all_objects_reachable:
+            while not all_objects_reachable:
                 self._regen_grid()
                 #color_door = self._rand_elem(['red', 'grey'])   # only red and grey doors at test time
                 #self.add_locked_room(color_door)
                 color_door = self._rand_color()
-                self.add_locked_room()                           # all colors are possible
+                self.add_locked_room(color=color_door)           # all colors are possible
                 self.connect_all()
 
                 for j in range(self.num_rows):
@@ -146,7 +147,8 @@ class Level_MixedLocal(LevelGen):
         elif action == 'goto':
             self.num_cols = 1
             self.num_rows = 1
-            while not mission_accepted or not all_objects_reachable:
+            #while not mission_accepted or not all_objects_reachable:
+            while not all_objects_reachable:
                 self._regen_grid()
                 self.place_agent()
                 objs = self.add_distractors(num_distractors=self.num_dists + 1, all_unique=False)
@@ -159,7 +161,8 @@ class Level_MixedLocal(LevelGen):
         elif action == 'pickup':
             self.num_cols = 1
             self.num_rows = 1
-            while not mission_accepted or not all_objects_reachable:
+            #while not mission_accepted or not all_objects_reachable:
+            while not all_objects_reachable:
                 self._regen_grid()
                 self.place_agent()
                 objs = self.add_distractors(num_distractors=self.num_dists + 1, all_unique=False)
@@ -174,7 +177,8 @@ class Level_MixedLocal(LevelGen):
         elif action == 'putnext':
             self.num_cols = 1
             self.num_rows = 1
-            while not mission_accepted or not all_objects_reachable:
+            #while not mission_accepted or not all_objects_reachable:
+            while not all_objects_reachable:
                 self._regen_grid()
                 self.place_agent()
                 objs = self.add_distractors(num_distractors=self.num_dists + 2, all_unique=False)
@@ -198,7 +202,8 @@ class Level_MixedLocal(LevelGen):
         elif action == 'pick up seq go to':
             self.num_cols = 1
             self.num_rows = 1
-            while not mission_accepted or not all_objects_reachable:
+            #while not mission_accepted or not all_objects_reachable:
+            while not all_objects_reachable:
                 self._regen_grid()
                 self.place_agent()
                 objs = self.add_distractors(num_distractors=self.num_dists + 2, all_unique=False)
